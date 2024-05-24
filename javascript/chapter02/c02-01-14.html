@@ -59,18 +59,25 @@
             checkbox.addEventListener("change",(event)=>{
                 text.style.textDecoration=event.currentTarget.checked?"line-through":"none"
             })
+            
+            //제거하기 버튼이 클릭 됐을 때
+            button.addEventListener("click", (e)=>{
+                removeTodo(itemKey)
+            })
         }
-
+        
         //할일 제거하기 함수
-        const removeTodo=()=>{
-          button.addButton("click",()=>{
-            // removeTodo(keyCount-1)
-            console.log(itemKey)
-          })
+        const removeTodo=(key)=>{
+            const item=todoList.querySelector(`[data-key='${key}']`)
+            if(item){
+                todoList.removeChild(item)
+            }
         }
-
+        
         //추가하기 버튼이 클릭 됐을 때
         addButton.addEventListener("click",addTodo)
+        
+        
         
 
 
